@@ -8,6 +8,12 @@
 #
 # Any existing key and CSR files will be deleted and overwritten. Beware!
 
+# Certificate issued through the Federal PKI, beginning with the
+# form found here: https://pki.treas.gov/OCA/cert.form.pdf
+#
+# (Bear in mind, pki.treas.gov itself uses a cert issued by
+# the Federal PKI, you may need to click through a warning.)
+
 import sys
 import os
 import getpass
@@ -27,6 +33,7 @@ csr_file = "%s.csr" % key_name
 sans = [x509.DNSName("test%i.fpki.18f.gov" % n) for n in list(range(1,16))]
 
 # CSR values.
+# (Yes, this is not a good Common Name -- sorry.)
 common_name = "General Services Administration"
 country_name = "US"
 state_or_province_name = "DC"
