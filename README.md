@@ -2,6 +2,18 @@
 
 Testing out Federal PKI certificate chains.
 
+The certificate being used for testing is valid for 15 SANs: `test[1..15].fpki.18f.gov` and can be found at [`18f-fpki-testing.crt`](chains/18f-fpki-testing.crt).
+
+## Certificate chains
+
+* [`test1`](https://test1.fpki.18f.gov) - No intermediates, end entity certificate only.
+
+* [`test2`](https://test2.fpki.18f.gov)
+  * https://crt.sh/?id=8764555
+  * https://crt.sh/?id=3264194
+  * https://crt.sh/?id=2981779
+  * https://crt.sh/?id=12638543
+
 ### Public domain
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in [CONTRIBUTING](CONTRIBUTING.md):

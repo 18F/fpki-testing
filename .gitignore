@@ -1,6 +1,6 @@
 *.pem
 *.csr
-*.crt
+/*.crt
 .DS_Store
 *.pyc
 *.key
