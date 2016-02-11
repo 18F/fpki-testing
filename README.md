@@ -8,11 +8,17 @@ The certificate being used for testing is valid for 15 SANs: `test[1..15].fpki.1
 
 * [`test1`](https://test1.fpki.18f.gov) - No intermediates, end entity certificate only.
 
-* [`test2`](https://test2.fpki.18f.gov)
+* [`test2`](https://test2.fpki.18f.gov) - Intermediate chain up to `Federal Bridge CA 2013`.
   * https://crt.sh/?id=8764555
   * https://crt.sh/?id=3264194
   * https://crt.sh/?id=2981779
   * https://crt.sh/?id=12638543
+
+* [`test3`](https://test3.fpki.18f.gov) - Intermediate chain up to Identrust's `DST ACES CA X6`.
+
+* [`test4`](https://test4.fpki.18f.gov) - Intermediate chain up to `VeriSign Universal Root Certification Authority`.
+
+See [`chains/`](chains/) for constructed certificate chains for each host.
 
 ### Public domain
 
