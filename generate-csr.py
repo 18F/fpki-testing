@@ -34,9 +34,9 @@ sans = [x509.DNSName("test%i.fpki.18f.gov" % n) for n in list(range(1,16))]
 
 # CSR values.
 # (Yes, this is not a good Common Name -- sorry.)
-common_name = "General Services Administration"
+common_name = key_name
 country_name = "US"
-state_or_province_name = "DC"
+state_or_province_name = "District of Columbia"
 locality_name = "Washington"
 organization_name = "U.S. Government"
 organizational_unit_name = "General Services Administration"
@@ -44,15 +44,18 @@ organizational_unit_name = "General Services Administration"
 
 
 # Get the passphrase to encrypt the key read in over STDIN.
-first_pass = getpass.getpass(prompt='Passphrase to encrypt key: ')
-second_pass = getpass.getpass(prompt='Repeat passphrase: ')
+try:
+    first_pass = getpass.getpass(prompt='Passphrase to encrypt key: ')
+    second_pass = getpass.getpass(prompt='Repeat passphrase: ')
 
-if first_pass == second_pass:
-    passphrase = first_pass.encode("utf-8")
-else:
-    print("Passphrases didn't agree. Try again.")
+    if first_pass == second_pass:
+        passphrase = first_pass.encode("utf-8")
+    else:
+        print("Passphrases didn't agree. Try again.")
+        exit()
+except KeyboardInterrupt:
+    print()
     exit()
-
 
 # Generate a 2048-bit RSA key.
 key = rsa.generate_private_key(
