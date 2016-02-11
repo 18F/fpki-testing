@@ -24,16 +24,25 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography import x509
 from cryptography.x509.oid import NameOID
 
-# Pick one of the SANs to use as the CN.
-key_name = "test1.fpki.18f.gov"
+# Use a descriptive slug for the key/CSR filename.
+key_name = "18f-fpki-testing"
 key_file = "%s.key" % key_name
 csr_file = "%s.csr" % key_name
+
+# We need the FPKI reference number as the CN. Read as a CLI arg.
+if (len(sys.argv) < 2) or (sys.argv[1] is None):
+    print("Provide the FPKI reference number.")
+    print("\t./generate-csr.py [reference-number]")
+    exit()
+
+# Read in FPKI reference number.
+common_name = sys.argv[1]
+print("Common Name: %s" % common_name)
 
 # SANS: test[1..15].fpki.18f.gov
 sans = [x509.DNSName("test%i.fpki.18f.gov" % n) for n in list(range(1,16))]
 
 # CSR values.
-common_name = key_name
 country_name = "US"
 state_or_province_name = "District of Columbia"
 locality_name = "Washington"
@@ -82,12 +91,14 @@ with open(key_file, "wb") as f:
 # Generate a CSR
 csr = x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
 
+    # For the FPKI, this is the reference number.
+    x509.NameAttribute(NameOID.COMMON_NAME, common_name),
+
     # Provide various details about who we are.
     x509.NameAttribute(NameOID.COUNTRY_NAME, country_name),
     x509.NameAttribute(NameOID.STATE_OR_PROVINCE_NAME, state_or_province_name),
     x509.NameAttribute(NameOID.LOCALITY_NAME, locality_name),
     x509.NameAttribute(NameOID.ORGANIZATION_NAME, organization_name),
-    x509.NameAttribute(NameOID.COMMON_NAME, common_name),
 
 ])).add_extension(
     x509.SubjectAlternativeName(sans),
