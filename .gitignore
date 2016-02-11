@@ -2,4 +2,5 @@
 *.csr
 .DS_Store
 *.pyc
+*.key
 
