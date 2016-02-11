@@ -24,8 +24,8 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography import x509
 from cryptography.x509.oid import NameOID
 
-# The domain to name the key after.
-key_name = "test.fpki.18f.gov"
+# Pick one of the SANs to use as the CN.
+key_name = "test1.fpki.18f.gov"
 key_file = "%s.key" % key_name
 csr_file = "%s.csr" % key_name
 
@@ -33,7 +33,6 @@ csr_file = "%s.csr" % key_name
 sans = [x509.DNSName("test%i.fpki.18f.gov" % n) for n in list(range(1,16))]
 
 # CSR values.
-# (Yes, this is not a good Common Name -- sorry.)
 common_name = key_name
 country_name = "US"
 state_or_province_name = "District of Columbia"
