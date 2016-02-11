@@ -48,7 +48,7 @@ first_pass = getpass.getpass(prompt='Passphrase to encrypt key: ')
 second_pass = getpass.getpass(prompt='Repeat passphrase: ')
 
 if first_pass == second_pass:
-    passphrase = bytes(first_pass, "utf-8")
+    passphrase = first_pass.encode("utf-8")
 else:
     print("Passphrases didn't agree. Try again.")
     exit()
