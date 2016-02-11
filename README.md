@@ -16,7 +16,7 @@ The certificate being used for testing is valid for 15 SANs: `test[1..15].fpki.1
 
 * [`test3`](https://test3.fpki.18f.gov) - Intermediate chain up to Identrust's `DST ACES CA X6`.
 
-* [`test4`](https://test4.fpki.18f.gov) - Intermediate chain up to `VeriSign Universal Root Certification Authority`.
+* [`test4`](https://test4.fpki.18f.gov) - Intermediate chain up to Symantec's `VeriSign Universal Root Certification Authority`.
 
 See [`chains/`](chains/) for constructed certificate chains for each host.
 
