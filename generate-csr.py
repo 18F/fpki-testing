@@ -11,8 +11,8 @@
 # Certificate issued through the Federal PKI, beginning with the
 # form found here: https://pki.treas.gov/OCA/cert.form.pdf
 #
-# (Bear in mind, pki.treas.gov itself uses a cert issued by
-# the Federal PKI, you may need to click through a warning.)
+# (Bear in mind, pki.treas.gov itself uses a cert issued by the Federal PKI,
+# so you may need to click through a warning if you don't have their root.)
 
 import sys
 import os
